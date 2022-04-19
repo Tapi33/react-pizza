@@ -1,7 +1,5 @@
 import React from "react";
-import Header from "./components/Header";
-import Categories from "./components/Categories";
-import SortPopup from "./components/SortPopup";
+import {Header, Categories, SortPopup} from "./components";
 
 
 function App() {
