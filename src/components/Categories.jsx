@@ -1,15 +1,20 @@
 import React, {useState} from 'react';
 
-const Categories = ({items}) => {
+const Categories = React.memo(function Categories({items, onClickItem}) {
     const [activeItem, setActiveItem] = useState(0);
+
+    const onSelectItem = (index) => {
+        setActiveItem(index)
+        onClickItem(index)
+    }
 
     return (
         <div className="categories">
             <ul>
-                {items.map((name, index)=>(
+                {items.map((name, index) => (
                     <li
                         className={activeItem === index ? 'active' : ''}
-                        onClick={()=>setActiveItem(index)}
+                        onClick={() => onSelectItem(index)}
                         key={index}>
                         {name}
                     </li>
@@ -17,6 +22,6 @@ const Categories = ({items}) => {
             </ul>
         </div>
     );
-};
+});
 
 export default Categories;
