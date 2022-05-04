@@ -3,6 +3,7 @@ import ClassName from 'classname';
 import PropTypes from 'prop-types';
 
 const PizzaBlock = ({name, imageUrl, price, types, sizes}) => {
+
     const [activeType, setActiveType] = useState(types[0]);
     const [activeSize, setActiveSize] = useState(sizes[0]);
 
@@ -83,7 +84,7 @@ PizzaBlock.propTypes = {
     price:PropTypes.number,
     imgUrl:PropTypes.string,
     types:PropTypes.arrayOf(PropTypes.number),
-    sizes:PropTypes.arrayOf(PropTypes.number)
+    sizes:PropTypes.arrayOf(PropTypes.number),
 }
 
 export default PizzaBlock;
