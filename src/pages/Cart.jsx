@@ -1,8 +1,13 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import CartItem from "../components/CartItem";
+import {useSelector} from "react-redux";
 
 const Cart = () => {
+    const {totalCount, totalPrice, items} = useSelector(({cart})=> cart);
+
+    const addedPizza = Object.values(items).flat()
+
     return (
         <div className="container container--cart">
             <div className="cart">
@@ -44,14 +49,14 @@ const Cart = () => {
                     </div>
                 </div>
                 <div className="content__items">
-                    <CartItem />
-                    <CartItem />
-                    <CartItem />
+                    {addedPizza.map((item) => (
+                        <CartItem name={item.name} size={item.size} type={item.type} />
+                    ))}
                 </div>
                 <div className="cart__bottom">
                     <div className="cart__bottom-details">
-                        <span> Всего пицц: <b>3 шт.</b> </span>
-                        <span> Сумма заказа: <b>900 ₽</b> </span>
+                        <span> Всего пицц: <b>{totalCount} шт.</b> </span>
+                        <span> Сумма заказа: <b>{totalPrice} ₽</b> </span>
                     </div>
                     <div className="cart__bottom-buttons">
                         <Link to="/" className="button button--outline button--add go-back-btn">
